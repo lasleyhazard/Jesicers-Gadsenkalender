@@ -1,0 +1,226 @@
+body {
+  background: #b71c1c;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: transparent;
+  padding: 34px 0 8px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-family: 'Mountains of Christmas', cursive, 'Segoe UI', Arial, sans-serif;
+  font-size: 3.2em;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 0 6px 12px #911b1b, 0 2px 0 #2e7d32;
+  margin: 0 auto;
+  padding: 16px 36px;
+  border-radius: 18px 18px 0 0;
+  background: rgba(183,28,28,0.96);
+  display: inline-block;
+  position: relative;
+  top: 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  max-width: 720px;
+  margin: 36px auto;
+  background: #f0f5f0; /* helles Grün-Weiß */
+  border-radius: 15px;
+  padding: 20px;
+  border: 3px solid #2e7d32; /* dunkles Grün */
+}
+
+.door {
+  background: #a5d6a7; /* milder Grünton */
+  border: 3px solid #b71c1c; /* Rot */
+  border-radius: 12px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: #b71c1c;
+  cursor: pointer;
+  filter: grayscale(60%);
+  transition: filter 0.3s, background 0.3s, color 0.3s;
+  box-shadow: 1px 3px 10px #97c78a;
+  user-select: none;
+  position: relative;
+}
+
+.door.open {
+  filter: none;
+  background: #2e7d32; /* sattes Tannengrün */
+  color: #f1f8e9; /* helles Grün */
+  font-weight: bold;
+  box-shadow: 0 6px 20px #1b4d20;
+  border: 3px solid #b71c1c;
+}
+
+.door .cat {
+  font-size: 1.4em;
+  margin-top: 8px;
+  color: #f1f8e9;
+  text-shadow: 0 2px 3px #4a1a1a;
+}
+
+.qr-input {
+  text-align: center;
+  margin: 38px auto 18px auto;
+  font-size: 1.2em;
+}
+
+.qr-input input, .qr-input button {
+  font-size: 1em;
+}
+
+.qr-input button {
+  background: #b71c1c;
+  color: #f1f8e9;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 7px 18px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 6px #6c1010;
+  border: 1.5px solid #2e7d32;
+}
+
+.progress {
+  text-align: center;
+  margin-bottom: 34px;
+  font-size: 1.1em;
+  color: #b71c1c;
+}
+
+footer {
+  background: #2e7d32;
+  color: #f1f8e9;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 50px;
+  letter-spacing: 1.3px;
+  border-top: 4px solid #b71c1c;
+}
+
+.door.not-interactive {
+  filter: grayscale(85%);
+  cursor: default;
+  opacity: 0.6;
+}
+
+.door.interactive {
+  border: 3px solid #2e7d32;
+  box-shadow: 0 0 18px #2e7d32aa inset;
+  cursor: pointer;
+  font-style: italic;
+}
+
+.door.interactive:hover {
+  background: #c8e6c9;
+  color: #1b5e20;
+}
+
+/* --- MODAL / POPUP-GUTSCHEIN DESIGN --- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(35, 18, 18, 0.68);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 1.3s cubic-bezier(.32,1.59,.49,.87);
+}
+.modal.hide-animate {
+  opacity: 0;
+  pointer-events: none;
+}
+.modal.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(135deg, #fff8e1 0%, #ffcdd2 54%, #ffe0b2 100%);
+  border-radius: 24px;
+  padding: 2.5em 2.3em 2em 2.3em;
+  min-width: 340px;
+  max-width: 96vw;
+  box-shadow: 0 8px 56px #b71c1cf0, 0 0 0 10px #fff3e0 inset;
+  border: 5px solid #b71c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 2em;
+  color: #b71c1c;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Mountains of Christmas', cursive, inherit;
+  opacity: 0.85;
+  transition: color 0.2s, opacity 0.2s;
+}
+.modal-close:hover {
+  opacity: 1;
+  color: #d32f2f;
+}
+.modal-content h2 {
+  margin-top: 0.1em;
+  margin-bottom: 0.7em;
+  color: #b71c1c;
+  font-family: 'Mountains of Christmas', cursive, serif;
+  font-size: 2.2em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 10px #fffad7, 0 0px 1px #d32f2f44;
+}
+#giftText {
+  font-family: 'Mountains of Christmas', cursive, serif;
+  font-size: 1.45em;
+  color: #3e2723;
+  margin-top: 0.2em;
+  margin-bottom: 0.4em;
+  text-align: center;
+  line-height: 1.4;
+  word-break: normal;
+  text-shadow: 0 2px 10px #ffe08277, 0 0px 1px #fffde775;
+  padding: 0.5em 0.4em 0.4em 0.4em;
+}
+@media (max-width: 500px) {
+  .modal-content {
+    min-width: 0;
+    padding: 1.3em 0.4em 1em 0.4em;
+  }
+  .modal-content h2 {
+    font-size: 1.2em;
+  }
+  #giftText {
+    font-size: 1.0em;
+  }
+}
